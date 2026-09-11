@@ -1,5 +1,6 @@
 import bebidas.*
 import tito.*
+import frutas.*
 
 describe "Tests de Tito" {
   test "Tito consume 10 de Whisky y su sustancia actual es Whisky" {
@@ -12,5 +13,34 @@ describe "Tests de Tito" {
   test "Tito consume 10 de Whisky y su dosis consumida es 10" {
     tito.consumir(10, whisky)
     assert.equals(10, tito.dosisConsumida())
+  }
+}
+
+describe "Tests de las nuevas bebidas" {
+
+  test "El licuado de banana y manzana de 1 litro otorga 16 de rendimiento" {
+    licuadoDeFrutas.agregarFruta(banana)  
+    licuadoDeFrutas.agregarFruta(manzana)
+    
+    assert.equals(16, licuadoDeFrutas.rendimientoQueOtorga(1000))
+  }
+
+  test "El licuado de 500 cm3 otorga la mitad de los nutrientes" {
+    licuadoDeFrutas.agregarFruta(banana)  
+    licuadoDeFrutas.agregarFruta(manzana)
+    assert.equals(8, licuadoDeFrutas.rendimientoQueOtorga(500))
+  }
+
+  test "Agua saborizada con tereré de 40 cm3 otorga rendimiento correcto" {
+    aguaSaborizada.saborizarCon(terere)
+    
+    assert.equals(2, aguaSaborizada.rendimientoQueOtorga(40))
+  }
+
+  test "Cóctel con whisky y cianuro rinde 0" {
+    coctel.agregarIngrediente(whisky)
+    coctel.agregarIngrediente(cianuro)
+    
+    assert.equals(0, coctel.rendimientoQueOtorga(100))
   }
 }
